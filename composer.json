@@ -1,0 +1,13 @@
+{
+  "name": "hnguyen/328/diner",
+  "description": "MVC Diner Application",
+  "authors": [
+    {
+    "name": "Huy Nguyen",
+    "email": "hxnguyen0031@gmail.com"
+    }
+  ],
+  "require": {
+    "bcosca/fatfree-core": "dev-master"
+  }
+}
