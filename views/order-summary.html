@@ -9,13 +9,11 @@
 <body>
 <div class = "container">
     <h1>GRC Diner</h1>
-    <h2>Serving cereal since 1990</h2>
+    <h2>Thank you for your order </h2>
     <p>We serve cereal and milk</p>
-    <img src="views/images/img.jpeg" alt="diner pic">
+    <p>You ordered {{@SESSION.food}} for {{ @SESSION.meal}}</p>
     <br>
-    <a href ="order" type = "button" class = "btn btn-primary">Place an order</a>
-    <a href="breakfast" class ="btn btn-primary"> breakie menu </a>
-    <a href="lunch" class ="btn btn-primary"> lunch menu </a>
+
 
 </div>
 </body>
