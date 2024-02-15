@@ -14,6 +14,11 @@ require_once ('vendor/autoload.php');
 require_once ('model/data-layer.php');
 require_once ('model/validate.php');
 
+//Test my Order class
+//$order = new Order("pizza", "breakfast", "mayo");
+//var_dump($order);
+
+
 // Instantiate Fat-Free framework (F3)
 $f3 = Base::instance(); //static method
 
@@ -71,9 +76,16 @@ $f3->route('GET|POST /order', function ($f3) {
 
         //if there are no errors then reroute
         if (empty($f3->get('errors')) ){
+
+            // Instantiate an Order object
+            $order = new Order($food, $meal);
+
+
+            // add order object into setter
+            $f3->set('SESSION.order', $order);
             // Put the data in the session array
-            $f3->set('SESSION.food', $food);
-            $f3->set('SESSION.meal', $meal);
+            //$f3->set('SESSION.food', $food);
+            //$f3->set('SESSION.meal', $meal);
 
             //Redirect to order2 only if there are no errors
             $f3->reroute('summary');
