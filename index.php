@@ -59,6 +59,9 @@ $f3->route('GET|POST /order', function ($f3) {
         $f3->reroute('summary');
     }
 
+    //Add data to the F3 "hive"
+    $f3->set('meals', array('breakfast','lunch','dinner'));
+
     // Display a view page
     $view = new Template();
     echo $view->render('views/order1.html');
