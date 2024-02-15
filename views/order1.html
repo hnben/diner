@@ -1,16 +1,5 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="../styles/styles.css">
-
-    <title>My Diner</title>
-</head><body>
+<include href="views/header.html">
+<body>
 <div class="container">
     <h1>The Diner:  Order Form</h1>
 
@@ -24,6 +13,9 @@
                 <input class="form-control" type="text" name="food" id="food" value="">
 
                 <!-- Display an error if there is one -->
+                <check if="{{ isset(@errors['food'])}}">
+                   <span class ="err"> {{ @errors['food']}} </span>
+                </check>
             </div>
         </div>
         <br>
@@ -33,14 +25,21 @@
             <label class="col-sm-4 control-label">Select a meal</label>
             <div class="col-sm-4">
                 <p>You chose </p>
-                <repeat group ="{{@meals}}" value="{{ @meal }}">
-                <label>
-                    <input type="radio" name="{{ @meal }}" id="{{ @meal }}" value="{{ @meal }}"> {{ ucwords(@meal) }}
-                    </input>
-                </label><br>
+                <repeat group="{{ @meals }}" value="{{ @meal }}">
+                    <label>
+                        <input type="radio"
+                               name="meal"
+                               id="{{ @meal }}"
+                               value="{{ @meal }}"
+                        > {{ ucwords(@meal) }}
+                        </input>
+                    </label><br>
                 </repeat>
-                <!-- Display an error if there is one -->
 
+                <!-- Display an error if there is one -->
+                <check if="{{ isset(@errors['meal'])}}">
+                    <span class ="err"> {{ @errors['meal']}} </span>
+                </check>
             </div>
         </div>
 
