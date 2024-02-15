@@ -11,13 +11,10 @@ error_reporting(E_ALL);
 
 // Require the autoload file
 require_once ('vendor/autoload.php');
-require_once ('model/data-layer.php');
-require_once ('model/validate.php');
 
 //Test my Order class
 //$order = new Order("pizza", "breakfast", "mayo");
 //var_dump($order);
-
 
 // Instantiate Fat-Free framework (F3)
 $f3 = Base::instance(); //static method
@@ -60,14 +57,14 @@ $f3->route('GET|POST /order', function ($f3) {
         $meal = "";
 
         //Validate the data
-        if (isFood($_POST['food'])){
+        if (Validate::isFood($_POST['food'])){
             $food = $_POST['food'];
         }
         else{
             $f3->set('errors["food"]' , "Invalid food");
         }
 
-        if (isset($_POST['meal']) AND validMeal($_POST['meal'])){
+        if (isset($_POST['meal']) AND Validate::validMeal($_POST['meal'])){
             $meal = $_POST['meal'];
         }
         else{
@@ -93,7 +90,7 @@ $f3->route('GET|POST /order', function ($f3) {
     }
 
     //Add data to the F3 "hive"
-    $f3->set('meals', getMeals());
+    $f3->set('meals', DataLayer::getMeals());
 
     // Display a view page
     $view = new Template();

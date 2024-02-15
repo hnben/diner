@@ -7,17 +7,19 @@
 
 //Return true if food is entered
 
-function isFood($food) : bool {
-    if (trim($food) == ""){
-        return false;
+class Validate {
+    static function isFood($food) : bool {
+        if (trim($food) == ""){
+            return false;
+        }
+        else if (!ctype_alpha($food)) {
+            return false;
+        }
+        return true;
     }
-    else if (!ctype_alpha($food)) {
-        return false;
-    }
-    return true;
-}
 
-function validMeal($meal) : bool
-{
-    return (in_array($meal, getMeals()));
+    static function validMeal($meal) : bool
+    {
+        return (in_array($meal, DataLayer::getMeals()));
+    }
 }

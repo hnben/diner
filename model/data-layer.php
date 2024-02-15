@@ -5,7 +5,11 @@
  *
  */
 
-
-function getMeals(){
-    return array('breakfast','brunch' ,'lunch', 'dinner');
+class DataLayer
+{
+    //static is classname::
+    //instanced method is object->
+    static function getMeals(){
+        return array('breakfast','brunch' ,'lunch', 'dinner');
+    }
 }
